@@ -1,1 +1,3 @@
-# basic-js-cheatsheet
+# basic-javascript-cheatsheet
+
+Inspired by @MelzShawn cheatsheets
