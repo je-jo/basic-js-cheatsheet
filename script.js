@@ -41,13 +41,14 @@ let d = "58" //typeof d "string"
 
 // ===Useful number methods
 
-c.toFixed(2); //2.78 round number to fixed number of decimal places
+c.toFixed(2); //2.78 round number to fixed number of decimal places, returns string!
 Number(d) //convert string to number
     + d //unary operator, also converts strings to numbers
 d.toString(); //number to string
 Math.random(); //a number from 0 to <1
-Math.floor(c); //2, Returns the largest integer less than or equal to c.
+Math.floor(c); //2, Returns the largest integer less than or equal to c, rounds the number down. Math.ceil() rounds up
 Math.round(c); //3, rounds to nearest integer
+Math.max(a,b,c,d); //58, converts if needed. Also Math.min()
 
 // ===Comparison operators
 
@@ -78,7 +79,7 @@ message.substring; // like slice but cannot accept negative indexes
 message.charAt(0); //"H", extracts character at known index
 message.replace("world", "everyone"); //'Hello, everyone!'Params are the string we want to replace, and the string we want to replace it with.
 message.replace(/l/g, "w"); //'Hewwo, worwd!' the global flag /g replaces all instances, no quotes needed. /i is case-insensitive flag
-message.indexOf("l", 6); //finds index number of first occurence of l, starting from index 6, start param is optional
+message.indexOf("l", 6); //finds index number of first occurence of l, starting from index 6, start param is optional, if not found returns -1!
 message.concat(" Nice to meet you all!"); //concatenates, same as plus operator
 message.split(""); //['H', 'e', 'l', 'l', 'o', ',', ' ', 'w', 'o', 'r', 'l', 'd', '!']
 message.split(","); //['Hello', ' world!']
@@ -118,12 +119,16 @@ function random(number) {
     return Math.floor(Math.random() * number) + 1;               //returns random int from 1 to number
 }
 
-let twoDecimalPlaces = function (x) {                             //function expression
-    return x.toFixed(2);
+let twoDecimalPlaces = function (x) {                             //function expression, named function expression are invoked (called) using the variable name.
+    return +x.toFixed(2);
 }
-twoDecimalPlaces(c);                                          //  named function expression are invoked (called) using the variable name.
+twoDecimalPlaces(c);                                          //  anony funcs are often used as parameters for other functions
 
-//anony funcs are often used as parameters for other functions
+function funcWithRestParameters(...params) {                   //func with rest parameters, params gets put in an array
+    console.log(params);
+}
+
+funcWithRestParameters("unknown", "number", "of", "params");
 
 let multiply = (y, z) => y * z;         //arrow function, a short form of function expression
 
@@ -138,7 +143,9 @@ names.unshift("zion"); //adds element to begining. Returns new length.
 names.pop(); //removes last element. Returns popped element.
 names.shift(); //removes first element, and shifts other elements to lower index. Returns shifted out element.
 names.toString(); //"anne,bonnie,clyde"
-names.join(" and "); //also joins elements to string but you can specify separator. "anne and bonnie and clyde"
+names.join(" and "); //also joins elements to string but you can specify separator. "anne and bonnie and clyde". "" - no space
+names.reverse(); //['clyde', 'bonnie', 'anne']
+names.includes("clyde"); //true, returns true if array contains specified value
 const newNames = names.concat("delphy", "eunice");
 const moreNames = ["fiona", "gerry"];
 const evenMoreNames = newNames.concat(moreNames, "helena");
@@ -154,6 +161,8 @@ const namesSliced = names.slice(1, 3); // ['betty', 'carol']
 /* slice method creates new array by slicing out a piece of old array.
 slice selects elements from the start argument, and up to (BUT NOT INCLUDING) the end argument. 
 If the second arg is ommited, rest of the array will be sliced*/
+const andMoreNames = [...evenMoreNames, "iris"]; //spread operator, copies items from array, or puts items in array
+const lastName = [..."johnson", "s", "hello"]; //['j', 'o', 'h', 'n', 's', 'o', 'n', 's', 'hello']
 
 // ===LOOPS===
 
