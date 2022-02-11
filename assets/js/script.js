@@ -119,7 +119,7 @@ function random(number) {
     return Math.floor(Math.random() * number) + 1;               //returns random int from 1 to number
 }
 
-let twoDecimalPlaces = function (x) {                             //function expression, named function expression are invoked (called) using the variable name.
+let twoDecimalPlaces = function (x) {                             //function expression, named function expression are called using the variable name.
     return +x.toFixed(2);
 }
 twoDecimalPlaces(c);                                          //  anony funcs are often used as parameters for other functions
