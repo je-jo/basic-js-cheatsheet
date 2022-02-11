@@ -43,12 +43,12 @@ let d = "58" //typeof d "string"
 
 c.toFixed(2); //2.78 round number to fixed number of decimal places, returns string!
 Number(d) //convert string to number
-    + d //unary operator, also converts strings to numbers
++d //unary operator, also converts strings to numbers
 d.toString(); //number to string
 Math.random(); //a number from 0 to <1
 Math.floor(c); //2, Returns the largest integer less than or equal to c, rounds the number down. Math.ceil() rounds up
 Math.round(c); //3, rounds to nearest integer
-Math.max(a,b,c,d); //58, converts if needed. Also Math.min()
+Math.max(a, b, c, d); //58, converts if needed. Also Math.min()
 
 // ===Comparison operators
 
@@ -63,7 +63,6 @@ d === +d //strict equality false, not same type
 && - AND 
 || - OR
 ! - NOT
-
 */
 
 // ===2.Strings
@@ -116,7 +115,7 @@ function myFunction(parameter = "no argument given") {            //function dec
 }
 
 function random(number) {
-    return Math.floor(Math.random() * number) + 1;               //returns random int from 1 to number
+    return Math.floor(Math.random() * number) + 1;               //useful, returns random int from 1 to number
 }
 
 let twoDecimalPlaces = function (x) {                             //function expression, named function expression are called using the variable name.
