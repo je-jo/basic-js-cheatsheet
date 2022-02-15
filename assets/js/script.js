@@ -209,3 +209,21 @@ namesSliced.forEach(name => console.log(name)); //forEach() method
 namesSliced.forEach(myFunction); //call a function for each item
 const upperNames = namesSliced.map(name => name.toUpperCase()); // map() - do something to each item and creates a new collection
 const namesWithH = evenMoreNames.filter(name => name.includes("h")); //filter() - creates a new collection of items that return "true"
+
+// ===DOM MANIPULATION AND EVENTS
+
+// 1.Selecting elements:
+const myElem1 = document.querySelector("#my-id"); //returns first element that matches
+const myElems2 = document.querySelectorAll(".my-class"); //returns nodelist, if needed nodelist can be converted to array with [...]
+const myParas = [...document.getElementsByTagName("p")]; //returns html collection, here converted to array because...
+myParas.forEach(para => para.style.lineHeight = "2"); //forEach wouldn't work on htmlcollection
+const myElem3 = document.getElementById("my-id");
+const myElems4 = document.getElementsByClassName("my-class my-other-class");//for multi classes, only elements with ALL of the classNames are selected.
+// relational selectors or traversing the DOM
+myElem1.parentNode() //we can chain multiple properties to get i.e. grandparents etc
+myElem1.children() //returns children element nodes, no text nodes and white spaces, childNodes() return everything
+myElem1.firstElementChild() //and lastElementChild();
+myElem1.previousElementSibling() //and nextElementSibling();
+// 2.Creating, manipulating and placing:
+
+
