@@ -43,7 +43,7 @@ let d = "58" //typeof d "string"
 
 c.toFixed(2); //2.78 round number to fixed number of decimal places, returns string!
 Number(d) //convert string to number
-+d //unary operator, also converts strings to numbers
+    + d //unary operator, also converts strings to numbers
 d.toString(); //number to string
 Math.random(); //a number from 0 to <1
 Math.floor(c); //2, Returns the largest integer less than or equal to c, rounds the number down. Math.ceil() rounds up
@@ -213,17 +213,48 @@ const namesWithH = evenMoreNames.filter(name => name.includes("h")); //filter() 
 // ===DOM MANIPULATION AND EVENTS
 
 // 1.Selecting elements:
-const myElem1 = document.querySelector("#my-id"); //returns first element that matches
-const myElems2 = document.querySelectorAll(".my-class"); //returns nodelist, if needed nodelist can be converted to array with [...]
-const myParas = [...document.getElementsByTagName("p")]; //returns html collection, here converted to array because...
-myParas.forEach(para => para.style.lineHeight = "2"); //forEach wouldn't work on htmlcollection
-const myElem3 = document.getElementById("my-id");
-const myElems4 = document.getElementsByClassName("my-class my-other-class");//for multi classes, only elements with ALL of the classNames are selected.
+const myButton = document.querySelector("#my-button"); //returns first element that matches
+const counterPara = document.querySelector("#click-counter");
+const multipleButtons = document.querySelectorAll(".multi-btn"); //returns nodelist, if needed nodelist can be converted to array with [...]
+const myParas = [...document.getElementsByTagName("p")]; //returns html collection of <p> elements, here converted to array
+const playgroundSection = document.getElementById("playground");
+const playgroundCards = document.getElementsByClassName("card card--playground");//for multi classes, only elements with ALL of the classNames are selected.
 // relational selectors or traversing the DOM
-myElem1.parentNode() //we can chain multiple properties to get i.e. grandparents etc
-myElem1.children() //returns children element nodes, no text nodes and white spaces, childNodes() return everything
-myElem1.firstElementChild() //and lastElementChild();
-myElem1.previousElementSibling() //and nextElementSibling();
+myButton.parentNode //we can chain multiple properties to get i.e. grandparents etc
+playgroundSection.children //returns htmlcol of children element nodes, no text nodes and white spaces, childNodes return everything
+playgroundSection.firstElementChild //and lastElementChild;
+playgroundSection.previousElementSibling //and nextElementSibling; 
 // 2.Creating, manipulating and placing:
+const createdPara = document.createElement("p"); //creates <p></p> in memory, does not add it to page
+createdPara.textContent = "I'am a paragraph created by Javascript"; //creates text node and appends it to elem. Or use...
+createdPara.innerHTML = "<span>I'm a paragraph created by <em>Javascript</em></span>"; //renders html inside element, should be used sparingly
+//playgroundSection.appendChild(createdPara); //parent.appendChild(child) adds elem as last child. Or moves already placed node to end of parent.
+playgroundSection.insertBefore(createdPara, playgroundCards[0]); //parent.insertBefore(newChild, reference child)
+myParas.forEach(para => para.style.lineHeight = "2"); //add inline styles with style property
+myButton.style.setProperty("color", "red");
+myButton.style.getPropertyValue("color");
+myButton.style.removeProperty("color");
+createdPara.setAttribute("class", "card"); //or we can use set-, get- and removeAttribute
+myButton.setAttribute("style", "font-size: 1.2rem; background-color: var(--clr-green)"); //we can add multiple rules with setAttribute
+myButton.classList.add('new'); //also remove and toggle
+// 3. Events
+let counter = 0
+myButton.addEventListener('click', () => { //here we used anonymous function
+    counter++;
+    if (counter == 1) {
+        counterPara.textContent = `You've clicked me ${counter} time.`
+    } else {
+        counterPara.textContent = `You've clicked me ${counter} times.`
+    }
+});
+function showSmiley(e) {                //or we can use named function
+    e.target.textContent = ":)"         //parameter e is the event itself
+    e.target.style.backgroundColor = "var(--clr-lgt-blue)"
+}
+multipleButtons.forEach((btn) => {      //attaching listeners to every element of an array or nodelist
+    btn.addEventListener("click", showSmiley);
+});
+
+
 
 
