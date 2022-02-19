@@ -218,6 +218,7 @@ const counterPara = document.querySelector("#click-counter");
 const multipleButtons = document.querySelectorAll(".multi-btn"); //returns nodelist, if needed nodelist can be converted to array with [...]
 const myParas = [...document.getElementsByTagName("p")]; //returns html collection of <p> elements, here converted to array
 const playgroundSection = document.getElementById("playground");
+const nestedDivs = [...document.getElementsByClassName("nested")];
 const playgroundCards = document.getElementsByClassName("card card--playground");//for multi classes, only elements with ALL of the classNames are selected.
 // relational selectors or traversing the DOM
 myButton.parentNode //we can chain multiple properties to get i.e. grandparents etc
@@ -234,27 +235,29 @@ myParas.forEach(para => para.style.lineHeight = "2"); //add inline styles with s
 myButton.style.setProperty("color", "red");
 myButton.style.getPropertyValue("color");
 myButton.style.removeProperty("color");
-createdPara.setAttribute("class", "card"); //or we can use set-, get- and removeAttribute
-myButton.setAttribute("style", "font-size: 1.2rem; background-color: var(--clr-green)"); //we can add multiple rules with setAttribute
-myButton.classList.add('new'); //also remove and toggle
+createdPara.setAttribute("class", "card"); //or we can use set-, get- and removeAttribute...
+myButton.setAttribute("style", "font-size: 1.2rem; background-color: var(--clr-green)"); //...which allow us to  add multiple rules
+myButton.classList.add('new'); //also remove and toggle classes
 // 3. Events
-let counter = 0
-myButton.addEventListener('click', () => { //here we used anonymous function
-    counter++;
-    if (counter == 1) {
-        counterPara.textContent = `You've clicked me ${counter} time.`
-    } else {
-        counterPara.textContent = `You've clicked me ${counter} times.`
-    }
+myButton.addEventListener('click', () => { //here we used anonymous function, we can also used named func
+    counterPara.textContent = `You've clicked me!`
 });
-function showSmiley(e) {                //or we can use named function
-    e.target.textContent = ":)"         //parameter e is the event itself
-    e.target.style.backgroundColor = "var(--clr-lgt-blue)"
-}
 multipleButtons.forEach((btn) => {      //attaching listeners to every element of an array or nodelist
-    btn.addEventListener("click", showSmiley);
+    btn.addEventListener("click", () => {
+        btn.textContent = `Hi!`
+    });
+});
+myButton.addEventListener('click', (e) => { //we can pass an *event parameter* to the function we're calling
+    e.target.style.backgroundColor = "var(--clr-orange)"; //here e.target is the elem which triggered the event
 });
 
-
-
-
+nestedDivs.forEach((div) => {
+    div.addEventListener("click", (e) => {
+        e.currentTarget.style.backgroundColor = "var(--clr-orange)"
+        e.target.style.backgroundColor = "var(--clr-green)";
+        console.log(e.eventPhase)
+        // console.log(`currentTarget is ${e.currentTarget.textContent}`);
+        // console.log(`target is ${e.target.textContent}`);
+        
+    });
+});

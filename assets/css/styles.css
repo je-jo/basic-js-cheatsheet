@@ -127,6 +127,13 @@ figcaption {
     outline: 1px solid var(--clr-pink);
 }
 
+.nested {
+    outline: 1px solid blue;
+    height: auto;
+    width: auto;
+    padding: 2em;
+}
+
 button {
     padding: 1em 1.5em;
     font-size: 1rem;
