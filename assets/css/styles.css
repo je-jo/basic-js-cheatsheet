@@ -92,7 +92,7 @@ h2 {
     font-variant: small-caps;
 }
 
-.figure__wrapper {
+.grid--wrapper {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
     gap: 2rem;
@@ -125,7 +125,10 @@ figcaption {
 
 .card {
     outline: 1px solid var(--clr-pink);
+    display: grid;
+    place-items: center;
 }
+
 
 .nested {
     outline: 1px solid blue;

@@ -27,7 +27,7 @@
                     Mels@Twitter</a>.</p>
             <p>Click the images for larger view.</p>
             <p>Check the linked javascript file for most up-to-date content.</p>
-            <div class="figure__wrapper">
+            <div class="grid--wrapper">
                 <a href="assets/images/basics.png" target="_blank">
                     <figure>
                         <img class="figure__img" src="assets/images/basics.png" alt="">
@@ -86,30 +86,42 @@
         </section>
         <section id="playground">
             <h2>DOM Playground</h2>
-            <div class="card card--playground">
-                <h3>Single element</h3>
-                <button id="my-button">Click Me!</button>
-                <p id="click-counter">You haven't clicked me yet...</p>
-            </div>
-            <div class="card card--playground">
-                <h3>Multiple elements</h3>
-                <button class="multi-btn">A</button>
-                <button class="multi-btn">B</button>
-                <button class="multi-btn">C</button>
-            </div>
-            <div class="card card--playground">
-                <h3>Bubbling and propagation</h3>
-                <div class="nested">1
-                    <div class="nested">2
-                        <div class="nested">3
+            <div class="grid--wrapper">
+                <div class="card card--playground">
+                    <h3>Single element</h3>
+                    <button id="my-button">Click Me!</button>
+                    <p id="click-counter">You haven't clicked me yet...</p>
+                </div>
+                <div class="card card--playground">
+                    <h3>Multiple elements</h3>
+                    <button class="multi-btn">A</button>
+                    <button class="multi-btn">B</button>
+                    <button class="multi-btn">C</button>
+                </div>
+                <div class="card card--playground">
+                    <h3>Target and "this"</h3>
+                    <div class="nested">1
+                        <div class="nested">2
+                            <div class="nested">3
+                            </div>
                         </div>
                     </div>
+                    <p><em>currentTarget</em> (orange) or <em>"this"</em> is the element whose eventListener triggered
+                        the event.</p>
+                    <p><em>target</em> (green) is where the event started.</p>
+                    <p>If we stop propagation, only the inner-most element will register the event.</p>
+                </div>
+                <div class="card card--playground">
+                    <h3>Keyboard</h3>
+                    <p>Press any key:</p>
+                    <div class="key-event"></div>
+                </div>
+                <div class="card card--playground">
+                    <h3>Interactive List</h3>
+                    <input id="my-input" type="text" placeholder="Enter item" maxlength="20"><button id="add" type="submit">Add item</button>
+                    <ul id="my-list"></ul>
                 </div>
             </div>
-            <div class="card card--playground">
-                <h3>Interactive List</h3>
-            </div>
-            <div class="card card--playground"></div>
         </section>
     </main>
     <footer></footer>

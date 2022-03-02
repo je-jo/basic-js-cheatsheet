@@ -220,6 +220,7 @@ const myParas = [...document.getElementsByTagName("p")]; //returns html collecti
 const playgroundSection = document.getElementById("playground");
 const nestedDivs = [...document.getElementsByClassName("nested")];
 const playgroundCards = document.getElementsByClassName("card card--playground");//for multi classes, only elements with ALL of the classNames are selected.
+const keyboardEvents = document.querySelector(".key-event");
 // relational selectors or traversing the DOM
 myButton.parentNode //we can chain multiple properties to get i.e. grandparents etc
 playgroundSection.children //returns htmlcol of children element nodes, no text nodes and white spaces, childNodes return everything
@@ -230,7 +231,7 @@ const createdPara = document.createElement("p"); //creates <p></p> in memory, do
 createdPara.textContent = "I'am a paragraph created by Javascript"; //creates text node and appends it to elem. Or use...
 createdPara.innerHTML = "<span>I'm a paragraph created by <em>Javascript</em></span>"; //renders html inside element, should be used sparingly
 //playgroundSection.appendChild(createdPara); //parent.appendChild(child) adds elem as last child. Or moves already placed node to end of parent.
-playgroundSection.insertBefore(createdPara, playgroundCards[0]); //parent.insertBefore(newChild, reference child)
+playgroundSection.insertBefore(createdPara, playgroundSection.lastElementChild); //parent.insertBefore(newChild, reference child)
 myParas.forEach(para => para.style.lineHeight = "2"); //add inline styles with style property
 myButton.style.setProperty("color", "red");
 myButton.style.getPropertyValue("color");
@@ -240,7 +241,7 @@ myButton.setAttribute("style", "font-size: 1.2rem; background-color: var(--clr-g
 myButton.classList.add('new'); //also remove and toggle classes
 // 3. Events
 myButton.addEventListener('click', () => { //here we used anonymous function, we can also used named func
-    counterPara.textContent = `You've clicked me!`
+    counterPara.textContent = `You clicked me!`
 });
 multipleButtons.forEach((btn) => {      //attaching listeners to every element of an array or nodelist
     btn.addEventListener("click", () => {
@@ -255,9 +256,21 @@ nestedDivs.forEach((div) => {
     div.addEventListener("click", (e) => {
         e.currentTarget.style.backgroundColor = "var(--clr-orange)"
         e.target.style.backgroundColor = "var(--clr-green)";
-        console.log(e.eventPhase)
-        // console.log(`currentTarget is ${e.currentTarget.textContent}`);
-        // console.log(`target is ${e.target.textContent}`);
-        
+        //e.stopPropagation();  
     });
+});
+document.addEventListener("keydown", (e) => {
+    keyboardEvents.textContent = `You pressed ${e.key}`
+});
+
+const list = document.querySelector("#my-list");
+const input = document.querySelector("#my-input");
+const addBtn = document.querySelector("#add");
+addBtn.addEventListener("click", () => {
+    const listItem = document.createElement("li");
+    const btnDelete = document.createElement("button");
+    listItem.textContent = input.value;
+    btnDelete.textContent = "X"
+    listItem.appendChild(btnDelete);
+    list.appendChild(listItem);
 });
