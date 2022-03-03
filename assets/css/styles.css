@@ -22,7 +22,7 @@
     --fs-small: 0.8rem;
     --fs-medium: 2rem;
     --fs-large: 3rem;
-    --trans: ease-out .2s
+    --trans: ease-out .3s
 }
 
 img {
@@ -30,10 +30,6 @@ img {
     max-width: 100%;
     margin: 0 auto;
 }
-
-/* h1, h2 {
-    font-family: 'Big Shoulders Display', cursive;
-} */
 
 a {
     color: var(--clr-pink);
@@ -99,13 +95,13 @@ h2 {
     padding: 2rem 0;
 }
 
-figure {
+.grid--wrapper > * {
     outline: 0.5rem solid var(--clr-light);
     border-radius: 0.5rem;
     background-color: #fff;
 }
 
-figure:hover {
+.grid--wrapper > *:hover {
     box-shadow: 0px 10px 30px rgba(51, 51, 51, 0.3);
     transition: var(--trans);
 }
@@ -124,22 +120,48 @@ figcaption {
 }
 
 .card {
-    outline: 1px solid var(--clr-pink);
-    display: grid;
-    place-items: center;
+    padding: 1em 2em;
 }
 
+h3 {
+    padding-bottom: 2rem;
+}
 
 .nested {
-    outline: 1px solid blue;
     height: auto;
     width: auto;
     padding: 2em;
+    border: 1px solid var(--clr-pink);
+    border-radius: 0.5em;
 }
 
 button {
-    padding: 1em 1.5em;
-    font-size: 1rem;
+    font-size: 1.3rem;
+    padding: 0.25em 0.5em;
+} 
+
+.input--wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5em;
+    margin-bottom: 1rem;
 }
 
+input {
+    font-size: inherit;
+    font-family: inherit;
+    padding: 0.25em 0.5em;
+    width: 100%;
+}
 
+ul {
+    display: grid;
+    gap: 1rem;
+}
+
+li {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.3em;
+    align-items: end;
+}

@@ -7,10 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display&family=Lexend+Deca&display=swap"
-        rel="stylesheet">
-    <script src="assets/js/script.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="assets/js/script.js" defer></script>
     <title>Javascript Cheatsheet</title>
 </head>
 
@@ -99,6 +98,11 @@
                     <button class="multi-btn">C</button>
                 </div>
                 <div class="card card--playground">
+                    <h3>Keyboard</h3>
+                    <p>Press any key:</p>
+                    <div class="key-event"></div>
+                </div>
+                <div class="card card--playground">
                     <h3>Target and "this"</h3>
                     <div class="nested">1
                         <div class="nested">2
@@ -112,14 +116,15 @@
                     <p>If we stop propagation, only the inner-most element will register the event.</p>
                 </div>
                 <div class="card card--playground">
-                    <h3>Keyboard</h3>
-                    <p>Press any key:</p>
-                    <div class="key-event"></div>
-                </div>
-                <div class="card card--playground">
                     <h3>Interactive List</h3>
-                    <input id="my-input" type="text" placeholder="Enter item" maxlength="20"><button id="add" type="submit">Add item</button>
-                    <ul id="my-list"></ul>
+                    <form action="">
+                        <label for="my-input">Enter a new item: </label>
+                        <div class="input--wrapper">
+                            <input id="my-input" type="text" placeholder="Buy milk" maxlength="20" required>
+                            <button type="submit">+</button>
+                        </div>
+                    </form>
+                    <ul></ul>
                 </div>
             </div>
         </section>

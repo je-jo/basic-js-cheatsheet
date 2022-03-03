@@ -260,17 +260,32 @@ nestedDivs.forEach((div) => {
     });
 });
 document.addEventListener("keydown", (e) => {
-    keyboardEvents.textContent = `You pressed ${e.key}`
+    keyboardEvents.textContent = `You pressed ${e.key}. The code is ${e.code}`
 });
 
-const list = document.querySelector("#my-list");
-const input = document.querySelector("#my-input");
-const addBtn = document.querySelector("#add");
-addBtn.addEventListener("click", () => {
+//playground
+
+//01-interactive list
+
+const form = document.querySelector("form");
+const input = document.querySelector("input");
+const list = document.querySelector("ul");
+
+form.addEventListener("submit", addListItem);
+
+function addListItem(e) {
+    let itemText = input.value;
+    input.value = "";
     const listItem = document.createElement("li");
     const btnDelete = document.createElement("button");
-    listItem.textContent = input.value;
-    btnDelete.textContent = "X"
+    listItem.textContent = itemText;
+    btnDelete.textContent = "X";
+    btnDelete.style.fontSize = "1rem";
     listItem.appendChild(btnDelete);
     list.appendChild(listItem);
-});
+    btnDelete.addEventListener("click", () => {
+        listItem.remove();
+    })
+    input.focus();
+    e.preventDefault();
+}
