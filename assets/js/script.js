@@ -263,6 +263,50 @@ document.addEventListener("keydown", (e) => {
     keyboardEvents.textContent = `You pressed ${e.key}. The code is ${e.code}`
 });
 
+// ===OBJECTS===
+
+const myObject = { //object literal, curly brackets with key:value pairs(properties and methods)
+    name: {
+        first: "Jane", //values can be anything, even other objects.
+        last: "Doe",
+    },
+    age: 38,
+    greeting: function () {
+        console.log(`Hi! I'm ${this.name.first}.`) //dot notation. object's "this" reffers to the current object
+    },
+    sayAge() { //shorter way of writing function.
+        console.log(`I'm ${this["age"]} years old.`) //bracket notation, must be quoted.
+    },
+    interests: ["coding", "hiking"],
+    job: "unemployed", //hanging comma
+}
+let myNewKey = "height";
+myObject[myNewKey] = "1.65m"; //we can use bracket notation to dinamically set names.
+
+function constructNewObject(name) { //regular function, initialize empty object, define one property and one method, return object
+    const obj = {};
+    obj.name = name;
+    obj.introduceSelf = function () {
+        console.log(`Hi! I'm ${this.name}.`);
+    }
+    return obj;
+}
+const newObject = constructNewObject("a New Object");
+newObject.introduceSelf();
+
+function Person(name) { //constructor function, capital first by convention, named for the type of object they create
+    this.name = name;
+    this.introduceSelf = function () {
+        console.log(`Hi, I'm ${this.name}!`);
+    }
+}
+const janie = new Person("Janie"); //we call a constructor function with "new" keyword
+janie.introduceSelf();
+
+
+
+
+
 //playground
 
 //01-interactive list
