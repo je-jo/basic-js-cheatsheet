@@ -209,6 +209,18 @@ namesSliced.forEach(name => console.log(name)); //forEach() method
 namesSliced.forEach(myFunction); //call a function for each item
 const upperNames = namesSliced.map(name => name.toUpperCase()); // map() - do something to each item and creates a new collection
 const namesWithH = evenMoreNames.filter(name => name.includes("h")); //filter() - creates a new collection of items that return "true"
+const hasT = names.some(name => name.includes("t")); //true, some() tests whether any item matches condition, returns boolean.
+const hasE = names.every(name => name.includes("y")); //false, every() tests if all items match condition, returns boolean.
+const startsWithB = names.find(name => name.includes("b")); //"betty", returns single item, first it finds
+const indexStartsWithB = names.findIndex(name => name.includes("b")); //1, returns index of first found item.
+const namesSorted = [...names].sort((first, next) => { //spread operator copies the array, otherwise sort() mutates original arr
+    if (first > next) { //sort() takes two items at a time and compares them
+        return 1;
+    } else { //to compare numbers instead of strings, minus sign is used instead of greater than
+        return -1;
+    }
+});
+const sum = [1,2,3,4].reduce((total, current) => total + current, 10); //optional third arg is starting value, can be empty brackets.
 
 // ===DOM MANIPULATION AND EVENTS
 
@@ -294,14 +306,22 @@ function constructNewObject(name) { //regular function, initialize empty object,
 const newObject = constructNewObject("a New Object");
 newObject.introduceSelf();
 
-function Person(name) { //constructor function, capital first by convention, named for the type of object they create
+function Person(name, age) { //constructor function, capital first by convention, named for the type of object they create
     this.name = name;
+    this.age = age;
     this.introduceSelf = function () {
-        console.log(`Hi, I'm ${this.name}!`);
+        console.log(`Hi, I'm ${this.name} and I'm ${this.age} years old!`);
     }
 }
-const janie = new Person("Janie"); //we call a constructor function with "new" keyword
+const janie = new Person("Janie", 38); //we call a constructor function with "new" keyword
 janie.introduceSelf();
+
+console.log("name" in myObject); //true, the "in" operator tests whether the property exists in object
+
+for (let prop in myObject) { //the "for...in" loops over all keys in objects
+    console.log(prop); //property names
+    console.log(myObject[prop]); //property values
+}
 
 
 
